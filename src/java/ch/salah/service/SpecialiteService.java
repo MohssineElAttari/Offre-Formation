@@ -25,17 +25,6 @@ public class SpecialiteService implements IDao<Specialite>{
         session.getTransaction().commit();
         session.close();
     }
-
-    @Override
-    public Specialite getById(int id) {
-        Specialite s = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        s = (Specialite) session.get(Specialite.class, id);
-        session.getTransaction().commit();
-        session.close();
-        return s;
-    }
     
     public List<Specialite> findAll(){
         List<Specialite> spe = null;
@@ -49,6 +38,30 @@ public class SpecialiteService implements IDao<Specialite>{
 
     @Override
     public void delete(Specialite o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.delete(o);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    @Override
+    public Specialite findById(int id) {
+        Specialite s = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        s = (Specialite) session.get(Specialite.class, id);
+        session.getTransaction().commit();
+        session.close();
+        return s;
+    }
+
+    @Override
+    public void update(Specialite o) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.update(o);
+        session.getTransaction().commit();
+        session.close();
     }
 }

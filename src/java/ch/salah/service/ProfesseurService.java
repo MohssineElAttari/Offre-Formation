@@ -27,32 +27,12 @@ public class ProfesseurService implements IDao<Professeur>{
         session.close();
     }
 
-    @Override
-    public Professeur getById(int id) {
-        Professeur p = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        p = (Professeur) session.get(Professeur.class, id);
-        session.getTransaction().commit();
-        session.close();
-        return p;
-    }
     
     public List<Professeur> getProBySpe(Specialite s){
         List<Professeur> profs = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         profs =  session.createQuery("From Professeur where specialite = "+s.getId()).list();
-        session.getTransaction().commit();
-        session.close();
-        return profs;
-    }
-    
-    public List<Professeur> getAll(){
-        List<Professeur> profs = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        profs =  session.createQuery("From Professeur order by nom").list();
         session.getTransaction().commit();
         session.close();
         return profs;
@@ -75,6 +55,37 @@ public class ProfesseurService implements IDao<Professeur>{
         session.delete(o);
         session.getTransaction().commit();
         session.close();
+    }
+
+    @Override
+    public Professeur findById(int id) {
+        Professeur p = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        p = (Professeur) session.get(Professeur.class, id);
+        session.getTransaction().commit();
+        session.close();
+        return p;
+    }
+
+    @Override
+    public void update(Professeur o) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.update(o);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    @Override
+    public List<Professeur> findAll() {
+        List<Professeur> profs = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        profs =  session.createQuery("From Professeur order by nom").list();
+        session.getTransaction().commit();
+        session.close();
+        return profs;
     }
     
 }

@@ -4,6 +4,7 @@ import ch.salah.service.SpecialiteService;
 import ch.salah.classes.Professeur;
 import ch.salah.service.ProfesseurService;
 import ch.salah.util.HibernateUtil;
+import com.google.gson.Gson;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

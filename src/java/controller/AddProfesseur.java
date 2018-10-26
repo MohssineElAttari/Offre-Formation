@@ -89,12 +89,9 @@ public class AddProfesseur extends HttpServlet {
              ProfesseurService ps = new ProfesseurService();
              SpecialiteService ss = new SpecialiteService();
              Professeur p = new Professeur();
-             p.setDateEmbouche(dateE);p.setEmail(email);p.setNom(nom);p.setPrenom(prenom);p.setTelephone(tel);p.setSexe(sexe);p.setSpecialite(ss.getById(s));
+             p.setDateEmbouche(dateE);p.setEmail(email);p.setNom(nom);p.setPrenom(prenom);p.setTelephone(tel);p.setSexe(sexe);p.setSpecialite(ss.findById(s));
              ps.create(p);
              Gson gs = new Gson();
-//             List<String> s = new ArrayList<>();
-//             s.add("hhhhj");s.add("hjjhj");
-//             System.out.println(s);
              List<Object[]> profs = ps.getProfs();
              out.write(gs.toJson(profs));
         }

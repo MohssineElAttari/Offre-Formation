@@ -57,7 +57,7 @@
                     <div class="form-group col-md-3">
                         <label>Sexe :</label>
                         <select class="form-control" id="sexe" name="sexe">
-                            <option value="hidden" >Choisir Genre </option>
+                            <option value="hidden" >Genre </option>
                             <option value="H" >Homme</option>
                             <option value="F" >Femme</option>
                         </select>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="row col-md-12">
                     <div class="form-group col-md-3">
-                        <button  value="Valider" id="save" onclick="addProfesseur()" class="btn btn-success">Ajouter</button>
+                        <input type="button" value="Ajouter" id="saveProf" name="saveProf" onclick="addProfesseur()" class="btn btn-success"/>
                     </div>
                 </div>
 
