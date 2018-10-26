@@ -248,37 +248,21 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Gestions<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="employes.jsp"><i class="fa fa-table fa-fw"></i> Gestion des Employes</a>
+                                    <a href="../professeur_crud.jsp"><i class="fa fa-table fa-fw"></i> Gestion Des Professeurs</a>
                                 </li>
                                 <li>
-                                    <a href="Services.jsp"><i class="fa fa-table fa-fw"></i> Gestion des Services</a>
+                                    <a href="#"><i class="fa fa-table fa-fw"></i> Gestion Des Clients</a>
                                 </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-     
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Services <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="SearchEmployeBetweenDates.jsp">Recherche Employes entre deux Dates</a>
+                                    <a href="#"><i class="fa fa-table fa-fw"></i> Gestion Des Formations</a>
                                 </li>
-                                 <li>
-                                    <a href="FilterByService.jsp">Filter Employe By Service</a>
+                                <li>
+                                    <a href="#"><i class="fa fa-table fa-fw"></i> Gestion Des Certificat</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         
-                             <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="E_S_chart.jsp">Employes/Services Chart</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
                        
                     </ul>
                 </div>
