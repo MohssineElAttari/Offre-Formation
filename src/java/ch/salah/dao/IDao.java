@@ -5,6 +5,8 @@
  */
 package ch.salah.dao;
 
+import java.util.List;
+
 /**
  *
  * @author salah
@@ -12,6 +14,8 @@ package ch.salah.dao;
 public interface IDao <S>{
     
     void create(S o);
-    S getById(int id);
+    S findById(int id);
+    void update(S o);
     void delete(S o);
+    List<S> findAll();
 }
