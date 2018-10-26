@@ -104,7 +104,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="mTable">
-                                        <% for (Professeur p : ps.getAll()) {%>
+                                        <% for (Professeur p : ps.findAll()) {%>
                                         <tr>
                                             <td><%= p.getNom()%></td>
                                             <td><%= p.getPrenom()%></td>
