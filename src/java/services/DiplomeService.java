@@ -3,66 +3,72 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.salah.service;
+package services;
 
-import ch.salah.classes.Ville;
-import ch.salah.dao.IDao;
-import ch.salah.util.HibernateUtil;
+import classes.Diplome;
+import dao.IDao;
+import util.HibernateUtil;
 import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 
 /**
  *
- * @author Mustapha
+ * @author AbderrahmanGu3
  */
-public class VilleService implements IDao {
-
+public class DiplomeService implements IDao<Diplome>{
+    
     @Override
-    public void create(Object o) {
+    public void create(Diplome o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(o);
         session.getTransaction().commit();
-        session.close();
+        session.clear();
     }
 
     @Override
-    public void delete(Object o) {
+    public Diplome findById(int id) {
+        Diplome d = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.delete(o);
+        d = (Diplome) session.get(Diplome.class,id);
         session.getTransaction().commit();
-        session.close();
+        session.clear();
+        return d;
     }
 
     @Override
-    public void update(Object o) {
+    public void update(Diplome o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(o);
         session.getTransaction().commit();
-        session.close();
+        session.clear();
     }
 
     @Override
-    public Object findById(int id) {
-        Ville v = null;
+    public void delete(Diplome o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        v = (Ville) session.get(Ville.class, id);
+        session.delete(o);
         session.getTransaction().commit();
-        session.close();
-        return v;
+        session.clear();
     }
 
     @Override
-    public List findAll() {
-        List<Ville> ville = null;
+    public List<Diplome> findAll() {
+        List<Diplome> diplomes = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        ville = session.createQuery("from Ville").list();
+        diplomes = session.createQuery("select Diplome").list();
         session.getTransaction().commit();
-        session.close();
-        return ville;
+        session.clear();
+        return diplomes;
     }
+    
+    
+    
 }

@@ -3,41 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.salah.service;
+package services;
 
-import ch.salah.classes.Specialite;
-import ch.salah.dao.IDao;
-import ch.salah.util.HibernateUtil;
+import classes.Ville;
+import dao.IDao;
+import util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
 
 /**
  *
- * @author salah
+ * @author Mustapha
  */
-public class SpecialiteService implements IDao<Specialite>{
+public class VilleService implements IDao {
 
     @Override
-    public void create(Specialite o) {
+    public void create(Object o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(o);
         session.getTransaction().commit();
         session.close();
     }
-    
-    public List<Specialite> findAll(){
-        List<Specialite> spe = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        spe = session.createQuery("From Specialite").list();
-        session.getTransaction().commit();
-        session.close();
-        return spe;
-    }
 
     @Override
-    public void delete(Specialite o) {
+    public void delete(Object o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(o);
@@ -46,22 +36,33 @@ public class SpecialiteService implements IDao<Specialite>{
     }
 
     @Override
-    public Specialite findById(int id) {
-        Specialite s = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        s = (Specialite) session.get(Specialite.class, id);
-        session.getTransaction().commit();
-        session.close();
-        return s;
-    }
-
-    @Override
-    public void update(Specialite o) {
+    public void update(Object o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(o);
         session.getTransaction().commit();
         session.close();
+    }
+
+    @Override
+    public Object findById(int id) {
+        Ville v = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        v = (Ville) session.get(Ville.class, id);
+        session.getTransaction().commit();
+        session.close();
+        return v;
+    }
+
+    @Override
+    public List findAll() {
+        List<Ville> ville = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        ville = session.createQuery("from Ville").list();
+        session.getTransaction().commit();
+        session.close();
+        return ville;
     }
 }

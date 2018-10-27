@@ -5,9 +5,9 @@
  */
 package controller;
 
-import ch.salah.classes.Professeur;
-import ch.salah.service.ProfesseurService;
-import ch.salah.service.SpecialiteService;
+import classes.Professeur;
+import services.ProfesseurService;
+import services.SpecialiteService;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;

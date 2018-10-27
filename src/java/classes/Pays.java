@@ -3,43 +3,52 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.salah.classes;
+package classes;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
- * @author AbderrahmanGu3
+ * @author Mustapha
  */
 @Entity
-public class Diplome {
-    
+public class Pays {
+
     @Id
     @GeneratedValue
+
     private int id;
-    private String type;
     private String nom;
-    
-    public Diplome() {
+
+    @OneToMany(mappedBy = "pays", fetch = FetchType.EAGER)
+    private List<Ville> ville;
+
+    public Pays() {
     }
 
-    public Diplome(String type, String nom) {
-        this.type = type;
+    public Pays(String nom) {
         this.nom = nom;
+    }
+
+    public List<Ville> getVille() {
+        return ville;
+    }
+
+    public void setVille(List<Ville> ville) {
+        this.ville = ville;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {
@@ -49,7 +58,4 @@ public class Diplome {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
-    
-    
 }

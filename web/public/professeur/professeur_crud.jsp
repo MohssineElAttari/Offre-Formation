@@ -3,10 +3,10 @@
     Created on : 25 oct. 2018, 15:35:27
     Author     : salah
 --%>
-<%@page import="ch.salah.classes.Specialite" %>
-<%@page import="ch.salah.classes.Professeur" %>
-<%@page import="ch.salah.service.ProfesseurService" %>
-<%@page import="ch.salah.service.SpecialiteService" %>
+<%@page import="classes.Specialite" %>
+<%@page import="classes.Professeur" %>
+<%@page import="services.ProfesseurService" %>
+<%@page import="services.SpecialiteService" %>
 <%
     SpecialiteService ss = new SpecialiteService();
     ProfesseurService ps = new ProfesseurService();
@@ -48,7 +48,6 @@
                     <div class="form-group col-md-3">
                         <label>Specialite :</label>
                         <select class="form-control" id="specialite" name="specialite">
-                            <option value="hidden" >Choisir Une Spécialite </option>
                             <% for (Specialite s : ss.findAll()) {%>
                             <option value="<%= s.getId()%>" ><%= s.getLibelle()%></option>
                             <% }%>
@@ -57,18 +56,17 @@
                     <div class="form-group col-md-3">
                         <label>Sexe :</label>
                         <select class="form-control" id="sexe" name="sexe">
-                            <option value="hidden" >Genre </option>
-                            <option value="H" >Homme</option>
-                            <option value="F" >Femme</option>
+                            <option value="Homme" >Homme</option>
+                            <option value="Femme" >Femme</option>
                         </select>
                     </div>
                     <div class="form-group col-md-3">
-                        <label>Date Embouche :</label>
+                        <label>Date Embauche :</label>
                         <input class="form-control" type="date" name="dateEmbouche" id="dateEmbouche"/>
                     </div>
                 </div>
                 <div class="row col-md-12">
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-3" style="margin-left: 40%">
                         <input type="button" value="Ajouter" id="saveProf" name="saveProf" onclick="addProfesseur()" class="btn btn-success"/>
                     </div>
                 </div>
@@ -98,7 +96,7 @@
                                             <th>Email</th>
                                             <th>Sexe</th>
                                             <th>Specialite</th>
-                                            <th>Date Embouche</th>
+                                            <th>Date Embauche</th>
                                             <th>Suprimer</th>
                                             <th>Modifier</th>
                                         </tr>
@@ -114,7 +112,7 @@
                                             <td><%= p.getSpecialite().getLibelle()%></td>
                                             <td><%= p.getDateEmbouche()%></td>
                                             <td><Button onclick="deleteProfesseur(<%=p.getId()%>)" class="btn btn-danger" >Supprimer</Button></td>
-                                            <td><Button onclick="updateProfesseur(<%=p.getId()%>)" class="btn btn-info" id ="update">Modifier</Button></td>
+                                            <td><Button onclick="updateProfesseur(<%=p.getId()%>,'<%= p.getNom()%>','<%= p.getPrenom()%>','<%= p.getTelephone()%>','<%= p.getEmail()%>','<%= p.getSexe()%>','<%= p.getSpecialite().getLibelle()%>','<%= p.getDateEmbouche()%>')" class="btn btn-info" id ="update">Modifier</Button></td>
                                         </tr>
                                         <% }%>
                                     </tbody>
@@ -129,7 +127,7 @@
             </div>
         </div>
         <%@ include file="includes/footer.jsp" %>
-
+        <script src="CRUD_Script/moment.js" type="text/javascript"></script>
         <script src="CRUD_Script/prof_crud_script.js" type="text/javascript"></script>
     </body>
 </html>

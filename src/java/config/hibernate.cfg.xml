@@ -47,7 +47,7 @@ Contributor(s):
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
-    <mapping class="ch.salah.classes.Professeur"/>
-    <mapping class="ch.salah.classes.Specialite"/>
+    <mapping class="classes.Specialite"/>
+    <mapping class="classes.Professeur"/>
   </session-factory>
 </hibernate-configuration>

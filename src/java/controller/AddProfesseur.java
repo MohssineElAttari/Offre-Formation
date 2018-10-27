@@ -5,9 +5,9 @@
  */
 package controller;
 
-import ch.salah.classes.Professeur;
-import ch.salah.service.ProfesseurService;
-import ch.salah.service.SpecialiteService;
+import classes.Professeur;
+import services.ProfesseurService;
+import services.SpecialiteService;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -42,35 +42,11 @@ public class AddProfesseur extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-         response.setContentType("application/json;charset=UTF-8");
+        
+        response.setContentType("application/json;charset=UTF-8");
+             ProfesseurService ps = new ProfesseurService();
+             SpecialiteService ss = new SpecialiteService();
+             
         try (PrintWriter out = response.getWriter()) {
             String nom = request.getParameter("nom");
             String prenom = request.getParameter("prenom");
@@ -86,15 +62,65 @@ public class AddProfesseur extends HttpServlet {
                  
                  Logger.getLogger(AddProfesseur.class.getName()).log(Level.SEVERE, null, ex);
              }
-             ProfesseurService ps = new ProfesseurService();
-             SpecialiteService ss = new SpecialiteService();
-             Professeur p = new Professeur();
-             p.setDateEmbouche(dateE);p.setEmail(email);p.setNom(nom);p.setPrenom(prenom);p.setTelephone(tel);p.setSexe(sexe);p.setSpecialite(ss.findById(s));
-             ps.create(p);
-             Gson gs = new Gson();
-             List<Object[]> profs = ps.getProfs();
-             out.write(gs.toJson(profs));
+            
+            if (!request.getParameter("idupdate").isEmpty()) {
+                int id = Integer.parseInt(request.getParameter("idupdate"));
+                Professeur p = ps.findById(id);
+                p.setDateEmbouche(dateE);
+                p.setEmail(email);
+                p.setNom(nom);
+                p.setPrenom(prenom);
+                p.setTelephone(tel);
+                p.setSexe(sexe);
+                p.setSpecialite(ss.findById(s));
+                ps.update(p);
+                Gson gs = new Gson();
+                out.write(gs.toJson(ps.getProfs()));
+            }else{
+                Professeur p = new Professeur();
+                p.setDateEmbouche(dateE);
+                p.setEmail(email);
+                p.setNom(nom);
+                p.setPrenom(prenom);
+                p.setTelephone(tel);
+                p.setSexe(sexe);
+                p.setSpecialite(ss.findById(s));
+                ps.create(p);
+                Gson gs = new Gson();
+                out.write(gs.toJson(ps.getProfs()));
+            }
+                
         }
+       
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**

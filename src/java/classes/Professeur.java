@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.salah.classes;
+package classes;
 
 import java.util.Date;
 import javax.persistence.Entity;

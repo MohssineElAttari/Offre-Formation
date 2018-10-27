@@ -1,9 +1,9 @@
 
-import ch.salah.classes.Specialite;
-import ch.salah.service.SpecialiteService;
-import ch.salah.classes.Professeur;
-import ch.salah.service.ProfesseurService;
-import ch.salah.util.HibernateUtil;
+import classes.Specialite;
+import services.SpecialiteService;
+import classes.Professeur;
+import services.ProfesseurService;
+import util.HibernateUtil;
 import com.google.gson.Gson;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

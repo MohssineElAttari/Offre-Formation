@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.salah.service;
+package services;
 
-import ch.salah.classes.Pays;
-import ch.salah.dao.IDao;
-import ch.salah.util.HibernateUtil;
+import classes.Pays;
+import dao.IDao;
+import util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
 
