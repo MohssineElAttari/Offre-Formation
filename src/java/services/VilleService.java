@@ -15,10 +15,10 @@ import org.hibernate.Session;
  *
  * @author Mustapha
  */
-public class VilleService implements IDao {
+public class VilleService implements IDao<Ville> {
 
     @Override
-    public void create(Object o) {
+    public void create(Ville o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(o);
@@ -27,7 +27,7 @@ public class VilleService implements IDao {
     }
 
     @Override
-    public void delete(Object o) {
+    public void delete(Ville o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(o);
@@ -36,7 +36,7 @@ public class VilleService implements IDao {
     }
 
     @Override
-    public void update(Object o) {
+    public void update(Ville o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(o);
@@ -45,7 +45,7 @@ public class VilleService implements IDao {
     }
 
     @Override
-    public Object findById(int id) {
+    public Ville findById(int id) {
         Ville v = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();

@@ -5,7 +5,7 @@
  */
 package services;
 
-import classes.Pays;
+import classes.Certificat;
 import dao.IDao;
 import util.HibernateUtil;
 import java.util.List;
@@ -13,12 +13,12 @@ import org.hibernate.Session;
 
 /**
  *
- * @author Mustapha
+ * @author ZAHIRA
  */
-public class PaysSercice implements IDao <Pays>{
+public class CertificatService implements IDao<Certificat> {
 
     @Override
-    public void create(Pays o) {
+    public void create(Certificat o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(o);
@@ -27,16 +27,18 @@ public class PaysSercice implements IDao <Pays>{
     }
 
     @Override
-    public void delete(Pays o) {
+    public Certificat findById(int id) {
+        Certificat c = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        session.delete(o);
+        c = (Certificat) session.get(Certificat.class, id);
         session.getTransaction().commit();
         session.close();
+        return c;
     }
 
     @Override
-    public void update(Pays o) {
+    public void update(Certificat o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(o);
@@ -45,25 +47,23 @@ public class PaysSercice implements IDao <Pays>{
     }
 
     @Override
-    public Pays findById(int id) {
-        Pays p = null;
+    public void delete(Certificat o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        p = (Pays) session.get(Pays.class, id);
+        session.delete(o);
         session.getTransaction().commit();
         session.close();
-        return p;
     }
 
     @Override
-    public List findAll() {
-        List<Pays> pays = null;
+    public List<Certificat> findAll() {
+        List<Certificat> certificat = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        pays = session.createQuery("from Pays").list();
+        certificat = session.createQuery("From Certificat").list();
         session.getTransaction().commit();
         session.close();
-        return pays;
+        return certificat;
     }
 
 }
