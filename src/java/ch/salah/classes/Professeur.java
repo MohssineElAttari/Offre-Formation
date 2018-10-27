@@ -22,7 +22,8 @@ import javax.persistence.TemporalType;
 @Entity
 @NamedQuery(name="findBetweenDate",query="From Professeur Where dateEmbouche between :dateD and :dateF")
 public class Professeur {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nom;
     private String prenom;
