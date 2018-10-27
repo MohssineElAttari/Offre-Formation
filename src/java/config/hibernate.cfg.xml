@@ -49,5 +49,11 @@ Contributor(s):
     <property name="hibernate.hbm2ddl.auto">update</property>
     <mapping class="classes.Specialite"/>
     <mapping class="classes.Professeur"/>
+    <mapping class="classes.Certificat"/>
+    <mapping class="classes.Diplome"/>
+    <mapping class="classes.Pays"/>
+    <mapping class="classes.Ville"/>
+    <mapping class="classes.Professeur_Diplome"/>
+    <mapping class="classes.Professeur_Cerfiticat"/>
   </session-factory>
 </hibernate-configuration>
