@@ -257,6 +257,9 @@
                                     <a href="../formation/formationCrud.jsp"><i class="fa fa-table fa-fw"></i> Gestion Des Formations</a>
                                 </li>
                                 <li>
+                                    <a href="../formation/InscriptionFormation.jsp"><i class="fa fa-table fa-fw"></i> Les inscriptions d'une Formation</a>
+                                </li>
+                                <li>
                                     <a href="#"><i class="fa fa-table fa-fw"></i> Gestion Des Certificat</a>
                                 </li>
                             </ul>

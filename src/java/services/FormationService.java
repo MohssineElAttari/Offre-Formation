@@ -15,7 +15,7 @@ import org.hibernate.Session;
  *
  * @author dell
  */
-public class FormationService implements IDao<Formation>{
+public class FormationService implements IDao<Formation> {
 
     @Override
     public void create(Formation o) {
@@ -25,17 +25,6 @@ public class FormationService implements IDao<Formation>{
         session.getTransaction().commit();
         session.close();
     }
-    
-    public List<Formation> findAll(){
-        List<Formation> formations = null;
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        formations = session.createQuery("From Formation").list();
-        session.getTransaction().commit();
-        session.close();
-        return formations;
-    }
-
 
     @Override
     public void delete(Formation o) {
@@ -76,14 +65,25 @@ public class FormationService implements IDao<Formation>{
         return formations;
     }
 
-//    public List<Object[]> getFormationsByInscription() {
-//        List<Object[]> formations = null;
-//        Session session = HibernateUtil.getSessionFactory().openSession();
-//        session.beginTransaction();
-//        formations = session.createQuery("Select f From Formation f, Professeur p, Type t where f.professeur.id = p.id and f.type.id = t.id and ").list();
-//        session.getTransaction().commit();
-//        session.close();
-//        return formations;
-//    }
-    
+    public List<Formation> getFormationsByInscription(int id) {
+        List<Formation> formations = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        formations = session.createQuery("Select f From Formation f, Professeur p where f.professeur.id = p.id and f.professeur.id="+id).list();
+        session.getTransaction().commit();
+        session.close();
+        return formations;
+    }
+
+    @Override
+    public List<Formation> findAll() {
+        List<Formation> formations = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        formations =  session.createQuery("From Formation").list();
+        session.getTransaction().commit();
+        session.close();
+        return formations;
+    }
+
 }
