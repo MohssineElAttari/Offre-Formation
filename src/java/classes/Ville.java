@@ -5,10 +5,13 @@
  */
 package classes;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 /**
@@ -23,6 +26,9 @@ public class Ville {
 
     private int id;
     private String nom;
+    
+    @OneToMany(mappedBy = "ville",fetch = FetchType.EAGER) 
+    private List<Client> client;
 
     @ManyToOne
     private Pays pays;
@@ -30,10 +36,13 @@ public class Ville {
     public Ville() {
     }
 
-    public Ville(String nom, Pays pays) {
+    public Ville(String nom, List<Client> client, Pays pays) {
         this.nom = nom;
+        this.client = client;
         this.pays = pays;
     }
+
+    
 
     public Pays getPays() {
         return pays;
@@ -58,5 +67,14 @@ public class Ville {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    public List<Client> getClient() {
+        return client;
+    }
+
+    public void setClient(List<Client> client) {
+        this.client = client;
+    }
+    
 
 }

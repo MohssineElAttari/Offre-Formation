@@ -5,70 +5,65 @@
  */
 package services;
 
-import classes.Diplome;
+import classes.Client;
 import dao.IDao;
-import util.HibernateUtil;
 import java.util.List;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-
+import util.HibernateUtil;
 
 /**
  *
- * @author AbderrahmanGu3
+ * @author PC
  */
-public class DiplomeService implements IDao<Diplome>{
-    
+public class ClientService implements IDao<Client>{
+
     @Override
-    public void create(Diplome o) {
+    public void create(Client o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.save(o);
         session.getTransaction().commit();
-        session.clear();
+        session.close();
     }
 
     @Override
-    public Diplome findById(int id) {
-        Diplome d = null;
+    public Client findById(int id) {
+        Client c = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        d = (Diplome) session.get(Diplome.class,id);
+        c = (Client) session.get(Client.class, id);
         session.getTransaction().commit();
-        session.clear();
-        return d;
+        session.close();
+        return c;
     }
 
     @Override
-    public void update(Diplome o) {
+    public void update(Client o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.update(o);
         session.getTransaction().commit();
-        session.clear();
+        session.close();
     }
 
     @Override
-    public void delete(Diplome o) {
+    public void delete(Client o) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(o);
         session.getTransaction().commit();
-        session.clear();
+        session.close();
     }
 
     @Override
-    public List<Diplome> findAll() {
-        List<Diplome> diplomes = null;
+    public List findAll() {
+        List<Client> client = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        diplomes = session.createQuery("FROM Diplome").list();
+        client = session.createQuery("FROM Client").list();
         session.getTransaction().commit();
-        session.clear();
-        return diplomes;
+        session.close();
+        return client;
     }
-    
-    
-    
+
 }

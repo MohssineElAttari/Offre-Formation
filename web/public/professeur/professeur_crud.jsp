@@ -3,6 +3,10 @@
     Created on : 25 oct. 2018, 15:35:27
     Author     : salah
 --%>
+<%@page import="classes.Certificat"%>
+<%@page import="classes.Diplome"%>
+<%@page import="services.CertificatService"%>
+<%@page import="services.DiplomeService"%>
 <%@page import="classes.Specialite" %>
 <%@page import="classes.Professeur" %>
 <%@page import="services.ProfesseurService" %>
@@ -10,6 +14,8 @@
 <%
     SpecialiteService ss = new SpecialiteService();
     ProfesseurService ps = new ProfesseurService();
+    DiplomeService ds = new DiplomeService();
+    CertificatService cs = new CertificatService();
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -48,6 +54,7 @@
                     <div class="form-group col-md-3">
                         <label>Specialite :</label>
                         <select class="form-control" id="specialite" name="specialite">
+                            <option selected disabled>Sélectionnez la spécialité</option>
                             <% for (Specialite s : ss.findAll()) {%>
                             <option value="<%= s.getId()%>" ><%= s.getLibelle()%></option>
                             <% }%>
@@ -56,6 +63,7 @@
                     <div class="form-group col-md-3">
                         <label>Sexe :</label>
                         <select class="form-control" id="sexe" name="sexe">
+                            <option selected disabled>Sélectionnez le sexe</option>
                             <option value="Homme" >Homme</option>
                             <option value="Femme" >Femme</option>
                         </select>
@@ -63,7 +71,8 @@
                     <div class="form-group col-md-3">
                         <label>Date Embauche :</label>
                         <input class="form-control" type="date" name="dateEmbouche" id="dateEmbouche"/>
-                    </div>
+                    </div>  
+
                 </div>
                 <div class="row col-md-12">
                     <div class="form-group col-md-3" style="margin-left: 40%">
@@ -112,7 +121,7 @@
                                             <td><%= p.getSpecialite().getLibelle()%></td>
                                             <td><%= p.getDateEmbouche()%></td>
                                             <td><Button onclick="deleteProfesseur(<%=p.getId()%>)" class="btn btn-danger" >Supprimer</Button></td>
-                                            <td><Button onclick="updateProfesseur(<%=p.getId()%>,'<%= p.getNom()%>','<%= p.getPrenom()%>','<%= p.getTelephone()%>','<%= p.getEmail()%>','<%= p.getSexe()%>','<%= p.getSpecialite().getLibelle()%>','<%= p.getDateEmbouche()%>')" class="btn btn-info" id ="update">Modifier</Button></td>
+                                            <td><Button onclick="updateProfesseur(<%=p.getId()%>, '<%= p.getNom()%>', '<%= p.getPrenom()%>', '<%= p.getTelephone()%>', '<%= p.getEmail()%>', '<%= p.getSexe()%>', '<%= p.getSpecialite().getLibelle()%>', '<%= p.getDateEmbouche()%>')" class="btn btn-info" id ="update">Modifier</Button></td>
                                         </tr>
                                         <% }%>
                                     </tbody>
