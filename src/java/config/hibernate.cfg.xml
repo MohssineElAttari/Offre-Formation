@@ -46,14 +46,16 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/h3?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.show_sql">true</property>
-    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.hbm2ddl.auto">create</property>
     <mapping class="classes.Specialite"/>
-    <mapping class="classes.Professeur"/>
     <mapping class="classes.Certificat"/>
     <mapping class="classes.Diplome"/>
     <mapping class="classes.Pays"/>
-    <mapping class="classes.Ville"/>
-    <mapping class="classes.Professeur_Diplome"/>
+    <mapping class="classes.Formation"/>
+    <mapping class="classes.Type"/>
+    <mapping class="classes.Professeur"/>
     <mapping class="classes.Professeur_Cerfiticat"/>
+    <mapping class="classes.Professeur_Diplome"/>
+    <mapping class="classes.Ville"/>
   </session-factory>
 </hibernate-configuration>

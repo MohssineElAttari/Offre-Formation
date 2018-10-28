@@ -6,12 +6,15 @@
 package classes;
 
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,9 +23,11 @@ import javax.persistence.TemporalType;
  * @author salah
  */
 @Entity
-@NamedQuery(name="findBetweenDate",query="From Professeur Where dateEmbouche between :dateD and :dateF")
+@NamedQuery(name = "findBetweenDate", query = "From Professeur Where dateEmbouche between :dateD and :dateF")
 public class Professeur {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nom;
     private String prenom;
@@ -31,11 +36,14 @@ public class Professeur {
     @Temporal(TemporalType.DATE)
     private Date dateEmbouche;
     private String sexe;
+    
     @ManyToOne
     private Specialite specialite;
 
-    public Professeur(int id, String nom, String prenom, String telephone, String email, Date dateEmbouche, String sexe, Specialite specialite) {
-        this.id = id;
+    @OneToMany(mappedBy = "professeur", fetch = FetchType.EAGER)
+    List<Formation> formations;
+
+    public Professeur(String nom, String prenom, String telephone, String email, Date dateEmbouche, String sexe, Specialite specialite, List<Formation> formations) {
         this.nom = nom;
         this.prenom = prenom;
         this.telephone = telephone;
@@ -43,6 +51,15 @@ public class Professeur {
         this.dateEmbouche = dateEmbouche;
         this.sexe = sexe;
         this.specialite = specialite;
+        this.formations = formations;
+    }
+
+    public List<Formation> getFormations() {
+        return formations;
+    }
+
+    public void setFormations(List<Formation> formations) {
+        this.formations = formations;
     }
 
     public Professeur() {
@@ -59,8 +76,6 @@ public class Professeur {
     public void setSpecialite(Specialite specialite) {
         this.specialite = specialite;
     }
-    
-    
 
     public void setId(int id) {
         this.id = id;
@@ -113,6 +128,5 @@ public class Professeur {
     public void setSexe(String sexe) {
         this.sexe = sexe;
     }
-    
-    
+
 }
