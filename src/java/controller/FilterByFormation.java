@@ -60,7 +60,12 @@ public class FilterByFormation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        FormationService fs = new FormationService();
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        response.setContentType("application/json");
+        new Gson().toJson(fs.getFormationsByInscription(id), response.getWriter());
     }
 
     /**
@@ -76,11 +81,6 @@ public class FilterByFormation extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         
-        FormationService fs = new FormationService();
-        int id = Integer.parseInt(request.getParameter("id"));
-        
-        response.setContentType("application/json");
-        new Gson().toJson(fs.getFormationsByInscription(id), response.getWriter());
     }
 
     /**

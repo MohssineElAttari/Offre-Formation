@@ -67,14 +67,15 @@
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
-                                        <tr>
-                                            <th>Nom</th>
-                                            <th>Prenom</th>
-                                            <th>Telephone</th>
-                                            <th>Email</th>
-                                            <th>Sexe</th>
-                                            <th>Specialite</th>
-                                            <th>Date Embauche</th>
+                                        <tr> 
+                                            <th>ID</th>
+                                            <th>NOM</th>
+                                            <th>DESCRIPTION</th>
+                                            <th>PREREQUIS</th>
+                                            <th>DATE DEBUT</th>
+                                            <th>DATE FIN</th>
+                                            <th>NBR BLACE</th>
+                                            <th>LIEU</th>
                                         </tr>
                                     </thead>
                                     <tbody id="mTable">
@@ -90,9 +91,9 @@
                 </div>
             </div>
         </div>
+        <script src="Script/searchData.js" type="text/javascript"></script>
         <%@ include file="../includes/footer.jsp" %>
-        <script src="CRUD_Script/moment.js" type="text/javascript"></script>
-        <script src="CRUD_Script/prof_crud_script.js" type="text/javascript"></script>
+        <script src="Script/moment.js" type="text/javascript"></script>
         <script src="Script/searchData.js" type="text/javascript"></script>
     </body>
 </html>

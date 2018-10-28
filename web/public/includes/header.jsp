@@ -20,3 +20,5 @@
         <link href="../../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <!-- Sweet Alert  -->
         <script src="../../vendor/sweet/sweet.js" type="text/javascript"></script>
+        <!-- jQuery -->
+        <script src="../../vendor/jquery/jquery.min.js"></script>

@@ -1,5 +1,4 @@
 
-
 $('#formations').change(function () {
     var id = $('#formations').val();
 
@@ -26,8 +25,9 @@ function feedTable(data) {
     for (var i = 0; i < data.length; i++) {
         var dn = moment(new Date(data[i][0].dateDebut)).format('L');
 
-        if (data[i][1].dateFin != undefined)
-            df = moment(new Date(data[i][1].dateFin)).format('L');
+        if (data[i][0].dateFin != undefined){
+            df = moment(new Date(data[i][0].dateFin)).format('L');
+        }
         ft += '<tr><td>' + data[i][0].id + '</td><td>' + data[i][0].nom + '</td><td>' + data[i][0].descr + '</td><td>' + data[i][0].prerequis + '</td><td>' + dn + '</td><td>' + df + '</td><td>' +  data[i][0].nbrplace + '</td><td>' +  data[i][0].lieu + '</td>';
         df = "-----";
     }
