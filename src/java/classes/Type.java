@@ -23,6 +23,7 @@ public class Type {
     @GeneratedValue
     private int id;
     private String nom;
+    
     @OneToMany(mappedBy = "type",fetch = FetchType.EAGER)
     List<Formation> formations;
 

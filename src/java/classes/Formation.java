@@ -8,11 +8,11 @@ package classes;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+
+
 
 /**
  *
@@ -24,25 +24,25 @@ public class Formation {
     @GeneratedValue
     private int id;
     private String nom;
-    private String desc;
+    private String descr;
     private String prerequis;
-    @Temporal(TemporalType.DATE)
     private Date dateDebut;
-    @Temporal(TemporalType.DATE)
     private Date dateFin;
     private int nbrplace;
     private String lieu;
+    
     @ManyToOne
-    private Professeur professeur ;
+    private Professeur professeur;
+    
     @ManyToOne
     private Type type;
 
     public Formation() {
     }
 
-    public Formation(String nom, String desc, String prerequis, Date dateDebut, Date dateFin, int nbrplace, String lieu, Professeur professeur, Type type) {
+    public Formation(String nom, String descr, String prerequis, Date dateDebut, Date dateFin, int nbrplace, String lieu, Professeur professeur, Type type) {
         this.nom = nom;
-        this.desc = desc;
+        this.descr = descr;
         this.prerequis = prerequis;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
@@ -50,10 +50,7 @@ public class Formation {
         this.lieu = lieu;
         this.professeur = professeur;
         this.type = type;
-   }
-//
-//   
-//
+    }
 
     public int getId() {
         return id;
@@ -71,12 +68,12 @@ public class Formation {
         this.nom = nom;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescr() {
+        return descr;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescr(String descr) {
+        this.descr = descr;
     }
 
     public String getPrerequis() {
@@ -134,7 +131,6 @@ public class Formation {
     public void setType(Type type) {
         this.type = type;
     }
-
     
     
 }

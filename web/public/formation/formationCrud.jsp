@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group col-md-3">
                         <label>Description :</label>
-                        <input class="form-control" type="text" name="desc" id="desc"/>
+                        <input class="form-control" type="text" name="descr" id="descr"/>
                     </div>
 
                     <div class="form-group col-md-3">
@@ -125,7 +125,7 @@
                                         <% for (Formation f : fs.findAll()) {%>
                                         <tr>
                                             <td><%= f.getNom() %></td>
-                                            <td><%= f.getDesc() %></td>
+                                            <td><%= f.getDescr() %></td>
                                             <td><%= f.getPrerequis() %></td>
                                             <td><%= f.getDateDebut() %></td>
                                             <td><%= f.getDateFin() %></td>
@@ -134,7 +134,7 @@
                                             <td><%= f.getProfesseur().getNom() %></td>                                          
                                             <td><%= f.getType().getNom() %></td>
                                             <td><Button onclick="deleteFormation(<%=f.getId()%>)" class="btn btn-danger" >Supprimer</Button></td>
-                                            <td><Button onclick="updateFormation(<%=f.getId() %>,'<%= f.getNom() %>','<%= f.getDesc() %>','<%= f.getPrerequis() %>','<%= f.getDateDebut() %>','<%= f.getDateFin() %>','<%= f.getDateDebut() %>','<%= f.getNbrplace() %>','<%= f.getLieu() %>','<%= f.getProfesseur().getNom() %>','<%= f.getType().getNom() %>')" class="btn btn-info" id ="update">Modifier</Button></td>
+                                            <td><Button onclick="updateFormation(<%=f.getId() %>,'<%= f.getNom() %>','<%= f.getDescr() %>','<%= f.getPrerequis() %>','<%= f.getDateDebut() %>','<%= f.getDateFin() %>','<%= f.getDateDebut() %>','<%= f.getNbrplace() %>','<%= f.getLieu() %>','<%= f.getProfesseur().getNom() %>','<%= f.getType().getNom() %>')" class="btn btn-info" id ="update">Modifier</Button></td>
                                         </tr>
                                         <% }%>
                                     </tbody>

@@ -48,7 +48,7 @@ public class AddFormation extends HttpServlet {
         TypeService ts = new TypeService();
         try (PrintWriter out = response.getWriter()) {
             String nom = request.getParameter("nom");
-            String desc = request.getParameter("desc");
+            String descr = request.getParameter("descr");
             String prerequis = request.getParameter("prerequis");
 
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -71,7 +71,7 @@ public class AddFormation extends HttpServlet {
                 Formation f = fs.findById(id);
                 f.setDateDebut(dated);
                 f.setDateFin(datef);
-                f.setDesc(desc);
+                f.setDescr(descr);
                 f.setLieu(lieu);
                 f.setNbrplace(nbrplace);
                 f.setNom(nom);
@@ -85,7 +85,7 @@ public class AddFormation extends HttpServlet {
                 Formation f = new Formation();
                 f.setDateDebut(dated);
                 f.setDateFin(datef);
-                f.setDesc(desc);
+                f.setDescr(descr);
                 f.setLieu(lieu);
                 f.setNbrplace(nbrplace);
                 f.setNom(nom);
