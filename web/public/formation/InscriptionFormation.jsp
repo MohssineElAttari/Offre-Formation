@@ -16,6 +16,7 @@
 <html>
     <head>
         <%@ include file="../includes/header.jsp" %>
+        <script src="Script/searchData.js" type="text/javascript"></script>
     </head>
     <body>
         <%@ include file="../includes/sidebarmenu.jsp" %>
@@ -36,10 +37,9 @@
                             <option value="heddin" >kkk</option>
                             <% 
                                 for (Formation f : fs.findAll()) {
-                                        
-                                    }
                             %>
-                            <option value="" >kkk</option>
+                            <option value="<%=f.getId()%>" ><%=f.getNom()%></option>
+                            <% } %>
                         </select>
                     </div>
                 </div>
@@ -93,5 +93,6 @@
         <%@ include file="../includes/footer.jsp" %>
         <script src="CRUD_Script/moment.js" type="text/javascript"></script>
         <script src="CRUD_Script/prof_crud_script.js" type="text/javascript"></script>
+        <script src="Script/searchData.js" type="text/javascript"></script>
     </body>
 </html>
