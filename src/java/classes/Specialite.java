@@ -27,6 +27,11 @@ public class Specialite {
         this.libelle = libelle;
     }
 
+    public Specialite(String code, String libelle) {
+        this.code = code;
+        this.libelle = libelle;
+    }
+
     public Specialite() {
     }
 

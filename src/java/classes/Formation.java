@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 
 
@@ -26,7 +27,9 @@ public class Formation {
     private String nom;
     private String descr;
     private String prerequis;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateDebut;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateFin;
     private int nbrplace;
     private String lieu;

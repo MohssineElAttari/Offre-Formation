@@ -248,13 +248,13 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Gestions<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="../professeur_crud.jsp"><i class="fa fa-table fa-fw"></i> Gestion Des Professeurs</a>
+                                    <a href="../professeur/professeur_crud.jsp"><i class="fa fa-table fa-fw"></i> Gestion Des Professeurs</a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-table fa-fw"></i> Gestion Des Clients</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-table fa-fw"></i> Gestion Des Formations</a>
+                                    <a href="../formation/formationCrud.jsp"><i class="fa fa-table fa-fw"></i> Gestion Des Formations</a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-table fa-fw"></i> Gestion Des Certificat</a>

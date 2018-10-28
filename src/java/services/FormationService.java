@@ -65,14 +65,25 @@ public class FormationService implements IDao<Formation>{
         session.getTransaction().commit();
         session.close();
     }
-      public List<Object[]> getFormations(){
+
+    public List<Object[]> getFormations() {
         List<Object[]> formations = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        formations =  session.createQuery("Select f,p,t From Formation f, Professeur p, Type t where f.professeur.id = p.id and f.type.id = t.id").list();
+        formations = session.createQuery("Select f,p,t From Formation f, Professeur p, Type t where f.professeur.id = p.id and f.type.id = t.id").list();
         session.getTransaction().commit();
         session.close();
         return formations;
     }
+
+//    public List<Object[]> getFormationsByInscription() {
+//        List<Object[]> formations = null;
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+//        session.beginTransaction();
+//        formations = session.createQuery("Select f From Formation f, Professeur p, Type t where f.professeur.id = p.id and f.type.id = t.id and ").list();
+//        session.getTransaction().commit();
+//        session.close();
+//        return formations;
+//    }
     
 }

@@ -9,7 +9,6 @@
 <%@page import="classes.Professeur" %>
 <%@page import="classes.Type" %>
 <%@page import="services.ProfesseurService" %>
-
 <%
     FormationService fs = new FormationService();
     ProfesseurService ps = new ProfesseurService();
@@ -19,10 +18,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@ include file="includes/header.jsp" %>
+        <%@ include file="../includes/header.jsp" %>
     </head>
     <body>
-        <%@ include file="includes/sidebarmenu.jsp" %>
+        <%@ include file="../includes/sidebarmenu.jsp" %>
         <div id="page-wrapper">
             <div class="row col-md-12">
                 <div class="col-lg-12">
@@ -149,10 +148,9 @@
                 </div>
             </div>
         </div>
-        <%@ include file="includes/footer.jsp" %>
+        <%@ include file="../includes/footer.jsp" %>
 
         <script src="Script/formationCrudScript.js" type="text/javascript"></script>
         <script src="Script/moment.js" type="text/javascript"></script>
     </body>
 </html>
-

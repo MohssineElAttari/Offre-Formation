@@ -53,6 +53,15 @@ public class Professeur {
         this.specialite = specialite;
         this.formations = formations;
     }
+    public Professeur(String nom, String prenom, String telephone, String email, Date dateEmbouche, String sexe, Specialite specialite) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.telephone = telephone;
+        this.email = email;
+        this.dateEmbouche = dateEmbouche;
+        this.sexe = sexe;
+        this.specialite = specialite;
+    }
 
     public List<Formation> getFormations() {
         return formations;
