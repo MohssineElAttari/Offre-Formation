@@ -58,5 +58,6 @@ Contributor(s):
     <mapping class="classes.Professeur_Diplome"/>
     <mapping class="classes.Ville"/>
     <mapping class="classes.Formation"/>
+    <mapping class="classes.ClientFormation"/>
   </session-factory>
 </hibernate-configuration>
